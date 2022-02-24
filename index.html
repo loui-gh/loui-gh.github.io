@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Loui's webpage :)</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Cantarell|Cousine">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="div-1">
+    <nav class="navbar bg-light navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul style="font-family:'Helvetica'" class="navbar-nav ml-auto justify-content-right">
+                    <li class="nav-item active"><a class="nav-link text-dark" href="#"> HOME</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="./aboutus.html"> ABOUT</a></li>
+					<li class="nav-item"><a class="nav-link text-dark" href="./contactus.html"> BLOG</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="./contactus.html"> CONTACT</a></li>
+				</ul>
+            </div>
+        </div>
+    </nav>
+	</div>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12">
+                    <h1 style="font-family: Sofia, sans-serif" class="text-dark">This is Loui's first self-hosted website</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<div>
+    <div class="container">
+        <div class="row row-content align-items-center">
+            <div class="col-12">
+                <h3>My first blog entry</h3>
+				<div>
+					Hello world!
+
+I am a budding web developer that goes by the name of Loui, and I am using this site to document my journey to becoming a web developer.
+
+Here’s where I’m starting from: I have finished 5% of my coding course at 42-Wolfsburg, and I have 3 coursera courses in Python under my belt. In other word, I am a noob, hence the domain name, webdevnoob :) 
+
+Originally I was just going to slap something together using a theme builder and work my way up from there. I spent 3+ hours this morning figuring out that I needed a domain name and a host (no, I didn’t know those two things were separate), and then another 3 hours deciding on which host was best. I had finally settled on a company in Lithuania when all of a sudden, a friend from 42-Wolfsburg – let’s call him Friendly Guy – came online. Friendly Guy has a background in web development and is a more advanced 42-student.
+
+Friendly Guy suggested that I host the website myself. My initial instinct was, “&%!@ no!!”, but I got over my fear of the unknown and instead listened to what turned out to be a bloody good impromptu tutorial on how to set up your own web hosting server. 
+
+<br> </br> If you’re interested, here it is in a nutshell: <br> </br> 
+
+				</div>
+            </div>
+
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" role="tab" id="entryhead">
+					<h4 class="mb-0">
+						<a class="collapsed"  data-toggle="collapse" data-target="#entry">
+						How to host your own website.
+						</a>
+					</h4>
+					</div>
+					<div class="collapse" id="entry" data-parent="#accordion">
+						<div class="card-body" >
+							<p class="d-none d-sm-block" > 
+								<ol>
+									<li >Buy server - I chose Hetzner</li>
+									<li>Add ssh key to server 
+										<ol type="i">
+											<li>$ ssh-keygen</li>
+											<li>Add id_rsa.pub to Hetzner server</li>
+										</ol></li>
+									<li>Buy domain name. I got mine for free from namecheap.com thanks to the Github Student Package</li>
+									<li>Point domain to server --> go to the domain provider, click ‘manage’, ‘Advanced DNS’, remove any other servers there, and add your IP address.</li>
+									<li>The Hetzner server has nothing on it, so you have to install everything yourself
+											<ul>
+												<li>$ sudo apt install nodejs</li></li>
+												<li>$ sudo apt install npm ←so that you can do a bunch of cool shit later</li>
+											</ul>
+									
+									<li>Add pip, apache and certbot (for SSL, so that your websites have HTTPS). For how-to see: 
+												<a href="url">https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/</a></li>
+												Notes: pip is a package manager for Python, npm is a package manager for ; apache2 is open source web server software. Please also note: I don’t really know what any of those things truly mean, I’m just taking a leap of faith for now :)
+												Create config file for your website
+									<li>Set up your apache config file
+										<ol type="i">
+											<li>Go to apache folder→/etc/apache2/sites-available</li>
+											<li>Create & modify config file</li>
+											<a>$ cp 000-default.conf webdevnoob.me.conf <br>modify your config file according to the picture below </a>
+											<li>Activate config file</li>
+											<a>$ a2ensite webdevnoob.me.conf</a>
+										</ol></li>
+									<a  class="font-italic">PRO TIP ON VIM: to type stuff, press ‘i’ to go to insert mode; to save & quit: ESC+SHIFT+ (little : appears bottom left of screen), enter: wq! + press ‘enter’</a>
+									<li>Create git repository, clone into /var/www</li>
+									<li>Once in /var/www, $ git clone [insert repository address here] yourwebsitefolder</li>
+									<li>Give apache2 rights to yourwebsitefolder
+										<ul>$ chown -R www-data:www-data /var/www</ul></li>
+									<li>Set up a package.json file
+										<ul>
+											<li>$ npm init</li>
+											<li>[insert image npm_init]</li>
+										</ul> </li>
+									<li>Write your first text
+										<ul>
+											<li>Create index.html file in yourwebsitefolder</li>
+											<li>$ vim index.html</li>
+											<li>Write "Hello world!" in your index.html file</li>
+									</ul> </li>
+								</ol>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
